@@ -120,7 +120,7 @@ RUN yum clean all
 RUN wget https://download.samba.org/pub/samba/stable/samba-$SAMBA_VERSION.tar.gz
 RUN tar -xvf samba-$SAMBA_VERSION.tar.gz && cd samba-$SAMBA_VERSION && ./configure --prefix /usr --enable-fhs --sysconfdir=/etc --localstatedir=/var --with-privatedir=/var/lib/samba/private --with-piddir=/var/run/samba --with-automount --datadir=/usr/share --with-lockdir=/var/run/samba --with-statedir=/var/lib/samba --with-cachedir=/var/cache/samba && make -j4 && make install && rm -rf /samba-$SAMBA_VERSION*
 
-# COPY nsswitch.conf /etc/nsswitch.conf
+COPY nsswitch.conf /etc/nsswitch.conf
 # COPY named.conf /etc/named.conf
 # RUN chown named:named /etc/named.conf
 # RUN echo 'OPTIONS="-4"' >> /etc/sysconfig/named
